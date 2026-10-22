@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bwhknv4s6oxeo"]
+
+[ext_resource type="Script" uid="uid://ca657cx1afelo" path="res://fairy_dust.gd" id="1_jbsui"]
+[ext_resource type="Texture2D" uid="uid://ct3qdcfsdjpj3" path="res://assets/poussiere_fee_animatiom.png" id="1_pwkj1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mru5q"]
+atlas = ExtResource("1_pwkj1")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2hk1"]
+atlas = ExtResource("1_pwkj1")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjqvi"]
+atlas = ExtResource("1_pwkj1")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4k8c8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mru5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2hk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjqvi")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwkj1"]
+radius = 10.049875
+
+[node name="Area2D" type="Area2D" unique_id=587072967]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_jbsui")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1040384900]
+sprite_frames = SubResource("SpriteFrames_4k8c8")
+autoplay = "default"
+frame_progress = 0.7717493
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993313873]
+shape = SubResource("CircleShape2D_pwkj1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
